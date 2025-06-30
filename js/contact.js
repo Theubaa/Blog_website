@@ -1,7 +1,7 @@
 // Contact form handling
 const contact = {
     // Google Apps Script Web App URL - Replace with your published web app URL
-    scriptURL: 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec',
+    scriptURL: 'https://docs.google.com/spreadsheets/d/1clIQm2IJiegFddIM9wJ1xAlL2oXXE5XP04daVqoaRkc/edit?gid=0#gid=0',
     
     // Form validation
     validateForm: (formData) => {
