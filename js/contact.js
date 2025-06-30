@@ -1,13 +1,8 @@
 const contact = {
-<<<<<<< HEAD
-    // Google Apps Script Web App URL - Replace with your published web app URL
-    scriptURL: 'https://docs.google.com/spreadsheets/d/1clIQm2IJiegFddIM9wJ1xAlL2oXXE5XP04daVqoaRkc/edit?gid=0#gid=0',
+    // Google Apps Script Web App URL - Will be updated after deployment
+    scriptURL: '', // Will be set after deploying the script
     
     // Form validation
-=======
-    scriptURL: 'https://script.google.com/macros/s/AKfycb.../exec', // ← Paste your Web App URL here
-
->>>>>>> b786063 (WIP: local changes before pull)
     validateForm: (formData) => {
         if (!formData.name) return showPopup('Please enter your name', 'error');
         if (!formData.email) return showPopup('Please enter your email', 'error');

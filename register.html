@@ -5,7 +5,210 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - The DevOps Dojo</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Auth Container */
+        .auth-container {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        }
+
+        .auth-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 460px;
+            transition: all 0.3s ease;
+        }
+
+        .auth-card h2 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        /* Form Styles */
+        .auth-form .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .auth-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .auth-form input {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+        }
+
+        .auth-form input:focus {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+            outline: none;
+            background-color: white;
+        }
+
+        .password-strength {
+            margin-top: 0.25rem;
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .password-strength.weak { color: #ef4444; }
+        .password-strength.medium { color: #f59e0b; }
+        .password-strength.strong { color: #10b981; }
+
+        .auth-form .submit-btn {
+            width: 100%;
+            padding: 0.9rem;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-form .submit-btn:hover {
+            background: #4338ca;
+            transform: translateY(-1px);
+        }
+
+        .auth-form .submit-btn i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .auth-form .submit-btn:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Terms and Conditions */
+        .terms {
+            margin: 1.5rem 0;
+            font-size: 0.85rem;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        .terms a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        /* Auth Options */
+        .auth-options {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #4b5563;
+        }
+
+        .auth-options a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .auth-options a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .auth-card {
+                padding: 1.75rem 1.25rem;
+                margin: 0 1rem;
+            }
+
+            .auth-card h2 {
+                font-size: 1.6rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .auth-form input {
+                padding: 0.75rem;
+                font-size: 0.95rem;
+            }
+
+            .auth-form .submit-btn {
+                padding: 0.8rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            .auth-container {
+                background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            }
+
+            .auth-card {
+                background: #2d3748;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            }
+
+            .auth-card h2 {
+                color: #f7fafc;
+            }
+
+            .auth-form label {
+                color: #e2e8f0;
+            }
+
+            .auth-form input {
+                background-color: #4a5568;
+                border-color: #4a5568;
+                color: #f7fafc;
+            }
+
+            .auth-form input:focus {
+                background-color: #2d3748;
+                border-color: #667eea;
+                box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+            }
+
+            .auth-form input::placeholder {
+                color: #a0aec0;
+            }
+
+            .terms {
+                color: #a0aec0;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="theme-toggle" class="theme-toggle">
@@ -21,38 +224,51 @@
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
             </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
     <main class="auth-container">
         <div class="auth-card">
-            <h2>Register</h2>
+            <h2>Create an Account</h2>
             <form id="register-form" class="auth-form">
                 <div class="form-group">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+                    <div id="password-strength" class="password-strength"></div>
                 </div>
 
                 <div class="form-group">
                     <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" name="confirm-password" required>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
                 </div>
 
-                <button type="submit" class="submit-btn">Register</button>
+                <div class="terms">
+                    By creating an account, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. We'll occasionally send you account related emails.
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">Create Account</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
             </form>
 
             <div class="auth-options">
-                <a href="login.html">Already have an account? Login here</a>
+                Already have an account? <a href="login.html">Sign in</a>
             </div>
         </div>
     </main>
@@ -60,5 +276,70 @@
     <script src="js/auth.js"></script>
     <script src="js/register.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenuToggle.classList.toggle('active');
+            });
+        }
+
+        // Password strength indicator
+        const passwordInput = document.getElementById('password');
+        const passwordStrength = document.getElementById('password-strength');
+        
+        if (passwordInput && passwordStrength) {
+            passwordInput.addEventListener('input', function() {
+                const password = this.value;
+                const strength = checkPasswordStrength(password);
+                
+                if (password.length === 0) {
+                    passwordStrength.textContent = '';
+                    passwordStrength.className = 'password-strength';
+                    return;
+                }
+                
+                if (password.length < 6) {
+                    passwordStrength.textContent = 'Too short';
+                    passwordStrength.className = 'password-strength weak';
+                } else if (strength < 3) {
+                    passwordStrength.textContent = 'Weak';
+                    passwordStrength.className = 'password-strength weak';
+                } else if (strength < 5) {
+                    passwordStrength.textContent = 'Medium';
+                    passwordStrength.className = 'password-strength medium';
+                } else {
+                    passwordStrength.textContent = 'Strong';
+                    passwordStrength.className = 'password-strength strong';
+                }
+            });
+        }
+
+        function checkPasswordStrength(password) {
+            let strength = 0;
+            
+            // Length check
+            if (password.length >= 8) strength += 1;
+            if (password.length >= 12) strength += 1;
+            
+            // Contains numbers
+            if (/\d/.test(password)) strength += 1;
+            
+            // Contains lowercase
+            if (/[a-z]/.test(password)) strength += 1;
+            
+            // Contains uppercase
+            if (/[A-Z]/.test(password)) strength += 1;
+            
+            // Contains special chars
+            if (/[^A-Za-z0-9]/.test(password)) strength += 1;
+            
+            return strength;
+        }
+    </script>
 </body>
 </html>
