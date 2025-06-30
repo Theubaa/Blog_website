@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-# TechBlog - Modern Technical Blog Site
+# The DevOps Dojo - Modern Technical Blog Site
 
 A clean, modern, and responsive technical blog site built with HTML, CSS, and JavaScript.
 
