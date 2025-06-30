@@ -1,81 +1,62 @@
-// Contact form handling
 const contact = {
+<<<<<<< HEAD
     // Google Apps Script Web App URL - Replace with your published web app URL
     scriptURL: 'https://docs.google.com/spreadsheets/d/1clIQm2IJiegFddIM9wJ1xAlL2oXXE5XP04daVqoaRkc/edit?gid=0#gid=0',
     
     // Form validation
+=======
+    scriptURL: 'https://script.google.com/macros/s/AKfycb.../exec', // ← Paste your Web App URL here
+
+>>>>>>> b786063 (WIP: local changes before pull)
     validateForm: (formData) => {
-        if (!formData.name) {
-            alert('Please enter your name');
-            return false;
-        }
-        if (!formData.email) {
-            alert('Please enter your email');
-            return false;
-        }
-        if (!formData.subject) {
-            alert('Please enter a subject');
-            return false;
-        }
-        if (!formData.message) {
-            alert('Please enter a message');
-            return false;
-        }
+        if (!formData.name) return showPopup('Please enter your name', 'error');
+        if (!formData.email) return showPopup('Please enter your email', 'error');
+        if (!formData.subject) return showPopup('Please enter a subject', 'error');
+        if (!formData.message) return showPopup('Please enter a message', 'error');
         return true;
     },
 
-    // Handle form submission
     handleSubmit: async (e) => {
         e.preventDefault();
-        
         const form = e.target;
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalBtnText = submitBtn.textContent;
-        
+
         try {
-            // Disable submit button and show loading state
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
-            
+
             const formData = new FormData(form);
             const formDataObj = Object.fromEntries(formData.entries());
-            
-            // Add timestamp
             formDataObj.timestamp = new Date().toISOString();
-            
+
             if (!contact.validateForm(formDataObj)) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
                 return;
             }
-            
-            // Send data to Google Sheets
-            const response = await fetch(contact.scriptURL, {
+
+            await fetch(contact.scriptURL, {
                 method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formDataObj)
             });
-            
-            // Show success message
-            alert('Thank you for your message! We will get back to you soon.');
+
+            showPopup('Message sent successfully!', 'success');
             form.reset();
-            
-        } catch (error) {
-            console.error('Error!', error.message);
-            alert('There was an error sending your message. Please try again later.');
+        } catch (err) {
+            console.error('Submit error:', err);
+            showPopup('Something went wrong. Try again later.', 'error');
         } finally {
-            // Re-enable submit button
             submitBtn.disabled = false;
             submitBtn.textContent = originalBtnText;
         }
     }
 };
 
-// Initialize form submission
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => contact.handleSubmit(e));
+        contactForm.addEventListener('submit', contact.handleSubmit);
     }
 });

@@ -6,6 +6,39 @@
     <title>Contact - The DevOps Dojo</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Popup Notification */
+        .popup {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 5px;
+            color: white;
+            font-weight: 500;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transform: translateX(120%);
+            transition: transform 0.3s ease-in-out;
+            max-width: 320px;
+        }
+
+        .popup.show {
+            transform: translateX(0);
+        }
+
+        .popup.success {
+            background-color: #4CAF50;
+        }
+
+        .popup.error {
+            background-color: #f44336;
+        }
+
+        .popup.warning {
+            background-color: #ff9800;
+        }
+    </style>
 </head>
 <body>
     <div id="theme-toggle" class="theme-toggle">
@@ -56,8 +89,8 @@
 
                 <div class="contact-info">
                     <h2>Get in Touch</h2>
-                    <p>Email: contact@techblog.com</p>
-                    <p>Twitter: @techblog</p>
+                    <p>Email: dojoofdevops@gmail.com</p>
+                    <p>Twitter: dojoofdevops</p>
                     <p>LinkedIn: The DevOps Dojo</p>
                 </div>
             </div>
@@ -78,9 +111,9 @@
                 <h3>The DevOps Dojo</h3>
                 <p>Join our community of tech enthusiasts</p>
                 <div class="social-links">
-                    <a href="#" class="social-icon">Twitter</a>
-                    <a href="#" class="social-icon">LinkedIn</a>
-                    <a href="#" class="social-icon">GitHub</a>
+                    <a href="https://twitter.com/dojoofdevops" class="social-icon">Twitter</a>
+                    <a href="https://linkedin.com/company/dojoofdevops" class="social-icon">LinkedIn</a>
+                    <a href="https://github.com/dojoofdevops" class="social-icon">GitHub</a>
                 </div>
             </div>
             <div class="footer-section">
@@ -109,6 +142,22 @@
     </footer>
 
     <script src="js/auth.js"></script>
-    <script src="js/main.js"></script>
+    <!-- Popup Notification -->
+    <div id="popup" class="popup"></div>
+
+    <script src="js/contact.js"></script>
+    <script>
+        // Show popup function
+        function showPopup(message, type = 'success') {
+            const popup = document.getElementById('popup');
+            popup.textContent = message;
+            popup.className = `popup show ${type}`;
+            
+            // Hide after 5 seconds
+            setTimeout(() => {
+                popup.className = 'popup';
+            }, 5000);
+        }
+    </script>
 </body>
 </html>
