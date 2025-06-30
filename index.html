@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Blog - Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/prism.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="theme-toggle" class="theme-toggle">
+        <span class="sun">☀️</span>
+        <span class="moon">🌙</span>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-content">
+            <h1 class="logo">TechBlog</h1>
+            <button class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="write.html" id="write-blog-btn">Write Blog</a>
+                <a href="login.html" id="login-btn">Login</a>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-menu">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="write.html">Write Blog</a>
+        <a href="login.html">Login</a>
+    </div>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h2>Welcome to TechBlog</h2>
+            <p>Explore the latest in technology, programming, and web development</p>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search blogs...">
+                <button id="search-btn">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="categories">
+            <h2>Categories</h2>
+            <div class="category-grid">
+                <a href="#" class="category-card" data-category="programming">Programming</a>
+                <a href="#" class="category-card" data-category="ai">AI & ML</a>
+                <a href="#" class="category-card" data-category="webdev">Web Development</a>
+                <a href="#" class="category-card" data-category="security">Security</a>
+            </div>
+        </section>
+
+        <section class="featured-blogs">
+            <h2>Featured Blogs</h2>
+            <div id="blog-grid" class="blog-grid">
+                <!-- Blog cards will be populated by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>TechBlog</h3>
+                <p>Join our community of tech enthusiasts</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 TechBlog. All rights reserved.</p>
+            <p>Designed and developed with ❤️</p>
+        </div>
+    </footer>
+
+    <script src="js/prism.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/blog.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
