@@ -1,38 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1200, initial-scale=1.0" />
+  <title>Sign Up – Easymail</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    :root {
+      --blue-gradient: linear-gradient(90deg, #4f8cff 0%, #3b6eea 100%);
+      --soft-gray: #f5f7fa;
+      --shadow: 0 6px 32px 0 rgba(60, 120, 255, 0.10), 0 1.5px 6px 0 rgba(0,0,0,0.04);
+      --neumorph: 0 2px 8px #e6eaf5, 0 1px 1px #fff;
+      --border-radius: 22px;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: var(--soft-gray);
+      color: #21243d;
+      min-height: 100vh;
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
+    }
+    .container {
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: row;
+    }
+    /* Left Card */
+    .signup-left {
+      flex: 1 1 480px;
+      max-width: 500px;
+      background: #fff;
+      border-radius: var(--border-radius);
+      margin: 32px 0 32px 32px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 48px 40px 28px 40px;
+      position: relative;
+      z-index: 2;
+    }
+    .signup-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .signup-header a {
+      color: #3b6eea;
+      font-weight: 500;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .signup-header a:hover {
+      color: #1d3557;
+    }
+    .signup-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+    .signup-subtitle {
+      font-size: 1.1rem;
+      color: #6b7a99;
+      margin-bottom: 32px;
+    }
+    .signup-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .input-label {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #21243d;
+    }
+    .input-field {
+      padding: 15px 18px;
+      border: none;
+      border-radius: 14px;
+      background: #f7faff;
+      font-size: 1.07rem;
+      box-shadow: var(--neumorph);
+      outline: none;
+      transition: box-shadow 0.2s;
+    }
+    .input-field:focus {
+      box-shadow: 0 0 0 2px #4f8cff33, var(--neumorph);
+      background: #f0f6ff;
+    }
+    .password-strength {
+      display: flex;
+      gap: 16px;
+      margin-top: 7px;
+    }
+    .strength-criteria {
+      display: flex;
+      align-items: center;
+      font-size: 0.97rem;
+      color: #8ea1c7;
+      gap: 4px;
+    }
+    .strength-criteria.checked {
+      color: #35b37a;
+      font-weight: 600;
+    }
+    .signup-btn {
+      margin-top: 12px;
+      background: var(--blue-gradient);
+      color: #fff;
+      font-size: 1.18rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 14px;
+      padding: 15px 0;
+      box-shadow: 0 4px 18px #4f8cff33;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .signup-btn:hover {
+      background: linear-gradient(90deg, #3b6eea 0%, #4f8cff 100%);
+      box-shadow: 0 2px 8px #4f8cff44;
+    }
+    .alt-signup {
+      margin: 30px 0 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+    }
+    .alt-text {
+      color: #b0b9cc;
+      font-size: 1.01rem;
+      margin-bottom: 2px;
+    }
+    .social-btns {
+      display: flex;
+      gap: 18px;
+    }
+    .social-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: none;
+      background: #f7faff;
+      box-shadow: var(--neumorph);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #4f8cff;
+      cursor: pointer;
+      transition: box-shadow 0.18s, background 0.15s;
+    }
+    .social-btn:hover {
+      background: #e8f0fe;
+      box-shadow: 0 2px 8px #4f8cff33;
+    }
+    .lang-selector {
+      position: absolute;
+      left: 28px;
+      bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.05rem;
+      color: #b0b9cc;
+      cursor: pointer;
+      user-select: none;
+    }
+    .lang-selector i {
+      font-size: 1.1rem;
+    }
+    /* Right Side */
+    .signup-right {
+      flex: 1 1 60%;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--blue-gradient);
+      border-radius: var(--border-radius) 0 0 var(--border-radius);
+    }
+    .wavy-bg {
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      left: -10%;
+      top: -10%;
+      background: radial-gradient(circle at 60% 40%, #6cb3ff 0%, #3b6eea 70%, #4f8cff 100%);
+      opacity: 0.85;
+      z-index: 1;
+      border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
+      filter: blur(2px);
+    }
+    .floating-card {
+      position: absolute;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 24px 28px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 180px;
+      min-height: 90px;
+    }
+    .analytics-card {
+      left: 60px;
+      top: 90px;
+      min-width: 210px;
+      min-height: 108px;
+    }
+    .analytics-title {
+      font-size: 1.01rem;
+      color: #3b6eea;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .analytics-data {
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .analytics-count {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #21243d;
+    }
+    .analytics-graph {
+      width: 54px;
+      height: 34px;
+      background: url('https://i.imgur.com/3n1b5ZP.png') no-repeat center/cover;
+      border-radius: 7px;
+    }
+    .analytics-footer {
+      font-size: 0.92rem;
+      color: #b0b9cc;
+    }
+    .info-card {
+      right: 80px;
+      bottom: 60px;
+      min-width: 180px;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .info-card-icon {
+      background: #e8f0fe;
+      color: #3b6eea;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+    .info-card-text {
+      font-size: 1.08rem;
+      color: #21243d;
+      font-weight: 600;
+      max-width: 120px;
+    }
+    .social-icons {
+      position: absolute;
+      right: 80px;
+      top: 38px;
+      display: flex;
+      gap: 18px;
+      z-index: 2;
+    }
+    .social-icon {
+      background: #fff;
+      color: #3b6eea;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      box-shadow: var(--neumorph);
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+    }
+    .social-icon:hover {
+      background: #e8f0fe;
+      color: #21243d;
+    }
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .signup-right { display: none; }
+      .signup-left { margin: 32px auto; }
+      .container { justify-content: center; }
+    }
+    @media (max-width: 700px) {
+      .signup-left {
+        margin: 0;
+        min-width: 100vw;
+        max-width: 100vw;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 28px 8vw 18px 8vw;
+      }
+      .lang-selector { left: 8vw; }
+    }
+  </style>
 </head>
 <body>
-    <div id="theme-toggle" class="theme-toggle">
-        <span class="sun">☀️</span>
-        <span class="moon">🌙</span>
-    </div>
-
-    <nav class="navbar">
-        <div class="nav-content">
-            <h1 class="logo">The DevOps Dojo</h1>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
+  <div class="container">
+    <!-- Left: Sign Up Card -->
+    <div class="signup-left">
+      <div>
+        <div class="signup-header">
+          <a href="#">Already member? Sign In</a>
+        </div>
+        <div class="signup-title">Sign Up</div>
+        <div class="signup-subtitle">Secure Your Communications with Easymail</div>
+        <form class="signup-form">
+          <div class="input-group">
+            <label class="input-label" for="fullname">Full Name</label>
+            <input class="input-field" id="fullname" name="fullname" type="text" placeholder="Enter your full name" required />
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="email">Email Address</label>
+            <input class="input-field" id="email" name="email" type="email" placeholder="Enter your email" required />
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="password">Password</label>
+            <input class="input-field" id="password" name="password" type="password" placeholder="Create a password" required />
+            <div class="password-strength">
+              <span class="strength-criteria checked"><i class="fa fa-check-circle"></i> 8+ chars</span>
+              <span class="strength-criteria"><i class="fa fa-circle"></i> 1 uppercase</span>
+              <span class="strength-criteria"><i class="fa fa-circle"></i> 1 number</span>
+              <span class="strength-criteria"><i class="fa fa-circle"></i> 1 symbol</span>
             </div>
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="retype">Re-type Password</label>
+            <input class="input-field" id="retype" name="retype" type="password" placeholder="Re-type your password" required />
+          </div>
+          <button class="signup-btn" type="submit">
+            Sign Up <i class="fa fa-arrow-right"></i>
+          </button>
+        </form>
+        <div class="alt-signup">
+          <div class="alt-text">or sign up with</div>
+          <div class="social-btns">
+            <button class="social-btn" aria-label="Sign up with Facebook"><i class="fab fa-facebook-f"></i></button>
+            <button class="social-btn" aria-label="Sign up with Google"><i class="fab fa-google"></i></button>
+          </div>
         </div>
-    </nav>
-
-    <main class="error-page">
-        <div class="error-content">
-            <h1>404</h1>
-            <p>Page Not Found</p>
-            <p>The page you're looking for doesn't exist.</p>
-            <a href="index.html" class="back-home">Back to Home</a>
+      </div>
+      <div class="lang-selector">
+        <i class="fa fa-globe"></i> English <i class="fa fa-chevron-down" style="font-size:0.9em;"></i>
+      </div>
+    </div>
+    <!-- Right: Abstract Wavy Background & Floating Cards -->
+    <div class="signup-right">
+      <div class="wavy-bg"></div>
+      <!-- Floating Analytics Card -->
+      <div class="floating-card analytics-card">
+        <div class="analytics-title">Inbox Analytics</div>
+        <div class="analytics-data">
+          <span class="analytics-count">1,245</span>
+          <span class="analytics-graph"></span>
         </div>
-    </main>
-
-    <script src="js/main.js"></script>
+        <div class="analytics-footer">Emails this month</div>
+      </div>
+      <!-- Floating Info Card -->
+      <div class="floating-card info-card">
+        <span class="info-card-icon"><i class="fa fa-key"></i></span>
+        <span class="info-card-text">Your data, your rules</span>
+      </div>
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <span class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></span>
+        <span class="social-icon" title="TikTok"><i class="fab fa-tiktok"></i></span>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
